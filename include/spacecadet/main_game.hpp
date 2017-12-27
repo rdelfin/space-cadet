@@ -1,7 +1,10 @@
 #ifndef SPACE_CADET_MAIN_GAME_HPP
 #define SPACE_CADET_MAIN_GAME_HPP
 
+#include <vector>
+
 #include <maguey/maguey.h>
+#include <maguey/game_object.h>
 
 class MainGame : public Game {
 public:
@@ -13,7 +16,7 @@ protected:
 
 private:
     Camera camera;
-
+    std::vector<GameObject> objects;
 };
 
 #endif

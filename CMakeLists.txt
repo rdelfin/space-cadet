@@ -10,7 +10,10 @@ ENDFOREACH(cmake)
 
 find_package(maguey REQUIRED)
 
-include_directories(${MAGUEY_INCLUDE_DIRS})
+include_directories(${MAGUEY_INCLUDE_DIRS}
+                    include/)
 
-add_executable(space-cadet src/main.cpp)
-target_link_libraries(space-cadet ${MAGUEY_LIBRARIES})
+add_executable(space-cadet src/main.cpp src/main_game.cpp)
+target_link_libraries(space-cadet ${MAGUEY_LIBRARIES}
+                                  ${stdgl_libraries}
+                                  SOIL) # TODO: Find a better solution for SOIL

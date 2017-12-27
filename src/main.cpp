@@ -2,7 +2,10 @@
 
 #include <maguey/maguey.h>
 
+#include <spacecadet/main_game.hpp>
+
 int main(int argc, char* argv[]) {
-    printf("Hello world!\n");
+    MainGame game;
+    game.run();
     return 0;
 }

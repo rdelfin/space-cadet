@@ -16,7 +16,7 @@ protected:
 
 private:
     Camera camera;
-    GameObject main_obj;
+    std::vector<GameObject> objects;
 };
 
 #endif

@@ -11,12 +11,14 @@ MainGame::MainGame() : Game("Space Cadet", glm::ivec2(2160, 1440), true), camera
              Shader("resources/shaders/default.frag"),
              camera);
 
-    this->main_obj.addMesh(m1);
+    this->objects.push_back(GameObject());
+    this->objects[0].addMesh(m1);
 }
 
 
 void MainGame::update(GameTime& gameTime) {
-    this->main_obj.update(gameTime);
+    for(GameObject& obj : this->objects)
+        obj.update(gameTime);
 
     // Exit key
     if(key().isPressed(GLFW_KEY_ESCAPE))
@@ -24,7 +26,8 @@ void MainGame::update(GameTime& gameTime) {
 }
 
 void MainGame::draw() {
-    this->main_obj.draw();
+    for(GameObject& obj : this->objects)
+        obj.draw();
 }
 
 MainGame::~MainGame() {

@@ -10,6 +10,7 @@ MainGame::MainGame() : Game("Space Cadet", glm::ivec2(2160, 1440), true), camera
              Shader("resources/shaders/default.geom"),
              Shader("resources/shaders/default.frag"),
              camera);
+    m1->setScale(glm::vec3(0.1, 0.1, 0.1));
 
     this->objects.push_back(GameObject());
     this->objects[0].addMesh(m1);

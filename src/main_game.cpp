@@ -4,6 +4,15 @@ MainGame::MainGame() : Game("Space Cadet", glm::ivec2(2160, 1440), true), camera
     this->camera.reposition(glm::vec3(15, 3, 0), glm::vec3(-15, -3, 0), glm::vec3(0, 1, 0));
     ObjLoader loader;
 
+    this->cubemap = new Skybox;
+    this->cubemap->load("resources/textures/space-box/right.png",
+                        "resources/textures/space-box/left.png",
+                        "resources/textures/space-box/top.png",
+                        "resources/textures/space-box/bottom.png",
+                        "resources/textures/space-box/front.png",
+                        "resources/textures/space-box/back.png",
+                        camera);
+
     auto * m1 = new TriangleMesh;
     m1->load("resources/models/teapot.obj", loader, 
              Shader("resources/shaders/default.vert"),
@@ -27,10 +36,12 @@ void MainGame::update(GameTime& gameTime) {
 }
 
 void MainGame::draw() {
+    this->cubemap->draw();
+
     for(GameObject& obj : this->objects)
         obj.draw();
 }
 
 MainGame::~MainGame() {
-
+    delete cubemap;
 }

@@ -16,6 +16,7 @@ protected:
 
 private:
     Camera camera;
+    Skybox* cubemap;
     std::vector<GameObject> objects;
 };
 

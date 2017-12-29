@@ -1,7 +1,7 @@
 #include <spacecadet/main_game.hpp>
 
 MainGame::MainGame() : Game("Space Cadet", glm::ivec2(2160, 1440), true), camera(getWindow()) {
-    this->camera.reposition(glm::vec3(15, 3, 0), glm::vec3(-15, -3, 0), glm::vec3(0, 1, 0));
+    this->camera.reposition(glm::vec3(30, 0, 0), glm::vec3(-30, 0, 0), glm::vec3(0, 1, 0));
     ObjLoader loader;
 
     this->cubemap = new Skybox;

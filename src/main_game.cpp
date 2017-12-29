@@ -8,7 +8,7 @@ MainGame::MainGame() : Game("Space Cadet", glm::ivec2(2160, 1440), true), camera
     this->cubemap->load("resources/textures/space-box/right.png",
                         "resources/textures/space-box/left.png",
                         "resources/textures/space-box/top.png",
-                        "resources/textures/space-box/bottom.png",
+                        "resources/textures/space-box/bot.png",
                         "resources/textures/space-box/front.png",
                         "resources/textures/space-box/back.png",
                         camera);

@@ -14,7 +14,7 @@ MainGame::MainGame() : Game("Space Cadet", glm::ivec2(2160, 1440), true), camera
                         camera);
 
     auto * m1 = new TriangleMesh;
-    m1->load("resources/models/teapot.obj", loader, 
+    m1->load("resources/models/imperial.obj", loader,
              Shader("resources/shaders/default.vert"),
              Shader("resources/shaders/default.geom"),
              Shader("resources/shaders/default.frag"),
@@ -30,9 +30,47 @@ void MainGame::update(GameTime& gameTime) {
     for(GameObject& obj : this->objects)
         obj.update(gameTime);
 
+    cam_update(gameTime);
+
     // Exit key
     if(key().isPressed(GLFW_KEY_ESCAPE))
         glfwSetWindowShouldClose(getWindow(), GL_TRUE);
+}
+
+void MainGame::cam_update(GameTime& gameTime) {
+    double spf = gameTime.getMillisecondsPerFrame() / 1000.0f;
+
+    // Pan
+    if(this->key().isPressed(GLFW_KEY_UP))
+        this->camera.pan(glm::vec3(0, 0, 1000 * spf));
+    if(this->key().isPressed(GLFW_KEY_DOWN))
+        this->camera.pan(glm::vec3(0, 0, -1000 * spf));
+    if(this->key().isPressed(GLFW_KEY_LEFT))
+        this->camera.pan(glm::vec3(-1000 * spf, 0, 0));
+    if(this->key().isPressed(GLFW_KEY_RIGHT))
+        this->camera.pan(glm::vec3(1000 * spf, 0, 0));
+    if(this->key().isPressed(GLFW_KEY_O))
+        this->camera.pan(glm::vec3(0, 1000 * spf, 0));
+    if(this->key().isPressed(GLFW_KEY_L))
+        this->camera.pan(glm::vec3(0, -1000 * spf, 0));
+    
+    // Yaw
+    if(this->key().isPressed(GLFW_KEY_A))
+        this->camera.yaw(5 * spf);
+    if(this->key().isPressed(GLFW_KEY_D))
+        this->camera.yaw(-5 * spf);
+
+    // Pitch
+    if(this->key().isPressed(GLFW_KEY_W))
+        this->camera.pitch(5 * spf);
+    if(this->key().isPressed(GLFW_KEY_S))
+        this->camera.pitch(-5 * spf);
+
+    // Roll
+    if(this->key().isPressed(GLFW_KEY_Q))
+        this->camera.roll(5 * spf);
+    if(this->key().isPressed(GLFW_KEY_E))
+        this->camera.roll(-5 * spf);
 }
 
 void MainGame::draw() {

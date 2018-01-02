@@ -18,6 +18,9 @@ private:
     Camera camera;
     Skybox* cubemap;
     std::vector<GameObject> objects;
+
+    void cam_update(GameTime& gameTime);
+
 };
 
 #endif

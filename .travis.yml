@@ -28,6 +28,7 @@ matrix:
            - libglfw3-dev
            - libsoil-dev
            - maguey
+           - libxrandr-dev
          sources: &precise_latest_boost_sources
            - ubuntu-toolchain-r-test
            - llvm-toolchain-precise-3.7

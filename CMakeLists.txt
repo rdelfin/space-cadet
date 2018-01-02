@@ -10,6 +10,10 @@ ENDFOREACH(cmake)
 
 find_package(maguey REQUIRED)
 
+message("Maguey include dirs: ${MAGUEY_INCLUDE_DIRS}")
+message("Maguey libraries: ${MAGUEY_LIBRARIES}")
+message("STDGL libraries: ${stdgl_libraries}")
+
 include_directories(${MAGUEY_INCLUDE_DIRS}
                     include/)
 

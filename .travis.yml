@@ -47,6 +47,8 @@ install:
     - echo ${CXX}
     - ${CXX} --version
     - ${CXX} -v
+    - ls -l /usr/lib | grep maguey
+    - ls -l /usr/lib/x86_64-linux-gnu | grep (GL)|(GLU)
     
     # Download and install recent cmake
     - |

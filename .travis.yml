@@ -24,7 +24,7 @@ matrix:
            - g++-5.4
            - valgrind
            - libglew-dev
-           - libglfw3-dev
+#           - libglfw3-dev
            - libsoil-dev
            - maguey
            - libxrandr-dev
@@ -40,6 +40,7 @@ before_install:
     - export CXX_FLAGS=${CXX_FLAGS}" "${ENV_CXX_FLAGS}
 
 install:
+    - git clone https://github.com/glfw/glfw && mkdir build && cd build && cmake ../glfw && make -j4 && sudo make install && cd ..
     - echo ${PATH}
     - echo ${CXX}
     - ${CXX} --version

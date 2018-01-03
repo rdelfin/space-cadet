@@ -24,6 +24,7 @@ matrix:
            - g++-5
            - valgrind
            - libglew-dev
+           - libxinerama-dev
 #           - libglfw3-dev
            - libsoil-dev
            - maguey

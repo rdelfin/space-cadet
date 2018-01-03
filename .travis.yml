@@ -30,7 +30,7 @@ matrix:
            - libxrandr-dev
            - libxi-dev
          sources: &precise_latest_boost_sources
-           - ubuntu-toolchain-r-test
+           - sourceline: 'ppa:ubuntu-toolchain-r/test'
            - sourceline: 'deb http://ppa.launchpad.net/keithw/glfw3/ubuntu trusty main'
            - sourceline: 'ppa:rdelfin/ppa'
     

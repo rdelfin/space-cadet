@@ -20,8 +20,8 @@ matrix:
       addons:
        apt:
          packages: &precise_latest_boost_packages
-           - gcc-5.4
-           - g++-5.4
+           - gcc-5
+           - g++-5
            - valgrind
            - libglew-dev
 #           - libglfw3-dev
@@ -31,7 +31,7 @@ matrix:
            - libxi-dev
          sources: &precise_latest_boost_sources
            - sourceline: 'ppa:ubuntu-toolchain-r/test'
-           - sourceline: 'deb http://ppa.launchpad.net/keithw/glfw3/ubuntu trusty main'
+#           - sourceline: 'deb http://ppa.launchpad.net/keithw/glfw3/ubuntu trusty main'
            - sourceline: 'ppa:rdelfin/ppa'
     
 before_install:

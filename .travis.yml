@@ -24,15 +24,13 @@ matrix:
            - g++-5
            - valgrind
            - libglew-dev
-           - libxinerama-dev
-#           - libglfw3-dev
            - libsoil-dev
            - maguey
            - libxrandr-dev
            - libxi-dev
+           - xorg-dev
          sources: &precise_latest_boost_sources
            - sourceline: 'ppa:ubuntu-toolchain-r/test'
-#           - sourceline: 'deb http://ppa.launchpad.net/keithw/glfw3/ubuntu trusty main'
            - sourceline: 'ppa:rdelfin/ppa'
     
 before_install:

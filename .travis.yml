@@ -20,8 +20,8 @@ matrix:
       addons:
        apt:
          packages: &precise_latest_boost_packages
-           - gcc-4.8
-           - g++-4.8
+           - gcc-5.4
+           - g++-5.4
            - clang-3.7
            - valgrind
            - libglew-dev

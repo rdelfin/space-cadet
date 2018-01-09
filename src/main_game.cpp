@@ -1,6 +1,6 @@
 #include <spacecadet/main_game.hpp>
 
-MainGame::MainGame() : Game("Space Cadet", glm::ivec2(2160, 1440), true), camera(getWindow()) {
+MainGame::MainGame() : Game("Space Cadet", glm::ivec2(1600, 1024), false), camera(getWindow()) {
     this->camera.reposition(glm::vec3(30, 0, 0), glm::vec3(-30, 0, 0), glm::vec3(0, 1, 0));
     ObjLoader loader;
 
@@ -38,7 +38,7 @@ void MainGame::update(GameTime& gameTime) {
 }
 
 void MainGame::cam_update(GameTime& gameTime) {
-    double spf = gameTime.getMillisecondsPerFrame() / 1000.0f;
+    float spf = (float)(gameTime.getMillisecondsPerFrame() / (long double)1000.0);
 
     // Pan
     if(this->key().isPressed(GLFW_KEY_UP))
@@ -56,21 +56,21 @@ void MainGame::cam_update(GameTime& gameTime) {
     
     // Yaw
     if(this->key().isPressed(GLFW_KEY_A))
-        this->camera.yaw(5 * spf);
+        this->camera.yaw(5.0f * spf);
     if(this->key().isPressed(GLFW_KEY_D))
-        this->camera.yaw(-5 * spf);
+        this->camera.yaw(-5.0f * spf);
 
     // Pitch
     if(this->key().isPressed(GLFW_KEY_W))
-        this->camera.pitch(5 * spf);
+        this->camera.pitch(5.0f * spf);
     if(this->key().isPressed(GLFW_KEY_S))
-        this->camera.pitch(-5 * spf);
+        this->camera.pitch(-5.0f * spf);
 
     // Roll
     if(this->key().isPressed(GLFW_KEY_Q))
-        this->camera.roll(5 * spf);
+        this->camera.roll(-5.0f * spf);
     if(this->key().isPressed(GLFW_KEY_E))
-        this->camera.roll(-5 * spf);
+        this->camera.roll(5.0f * spf);
 }
 
 void MainGame::draw() {

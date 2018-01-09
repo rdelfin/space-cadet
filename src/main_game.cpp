@@ -21,7 +21,7 @@ MainGame::MainGame() : Game("Space Cadet", glm::ivec2(1600, 1024), false), camer
              camera);
     m1->setScale(glm::vec3(0.1, 0.1, 0.1));
 
-    this->objects.push_back(GameObject());
+    this->objects.emplace_back();
     this->objects[0].addMesh(m1);
 }
 

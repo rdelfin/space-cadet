@@ -3,23 +3,23 @@
 
 #include <vector>
 
-#include <maguey/maguey.h>
-#include <maguey/game_object.h>
+#include <maguey/maguey.hpp>
+#include <maguey/game_object.hpp>
 
-class MainGame : public Game {
+class MainGame : public maguey::Game {
 public:
     MainGame();
     ~MainGame();
 protected:
-    void update(GameTime& gameTime) override;
+    void update(maguey::GameTime& gameTime) override;
     void draw() override;
 
 private:
-    Camera camera;
-    Skybox* cubemap;
-    std::vector<GameObject> objects;
+    maguey::Camera camera;
+    maguey::Skybox* cubemap;
+    std::vector<maguey::GameObject> objects;
 
-    void cam_update(GameTime& gameTime);
+    void cam_update(maguey::GameTime& gameTime);
 
 };
 

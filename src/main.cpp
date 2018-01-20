@@ -1,6 +1,6 @@
 #include <cstdio>
 
-#include <maguey/maguey.h>
+#include <maguey/maguey.hpp>
 
 #include <spacecadet/main_game.hpp>
 

@@ -1,10 +1,10 @@
 #include <spacecadet/main_game.hpp>
 
-MainGame::MainGame() : Game("Space Cadet", glm::ivec2(1600, 1024), false), camera(getWindow()) {
+MainGame::MainGame() : maguey::Game("Space Cadet", glm::ivec2(1600, 1024), false), camera(getWindow()) {
     this->camera.reposition(glm::vec3(30, 0, 0), glm::vec3(-30, 0, 0), glm::vec3(0, 1, 0));
-    ObjLoader loader;
+    maguey::ObjLoader loader;
 
-    this->cubemap = new Skybox;
+    this->cubemap = new maguey::Skybox;
     this->cubemap->load("resources/textures/space-box/right.png",
                         "resources/textures/space-box/left.png",
                         "resources/textures/space-box/top.png",
@@ -13,12 +13,8 @@ MainGame::MainGame() : Game("Space Cadet", glm::ivec2(1600, 1024), false), camer
                         "resources/textures/space-box/back.png",
                         camera);
 
-    auto * m1 = new TriangleMesh;
-    m1->load("resources/models/imperial.obj", loader,
-             Shader("resources/shaders/default.vert"),
-             Shader("resources/shaders/default.geom"),
-             Shader("resources/shaders/default.frag"),
-             camera);
+    auto * m1 = new maguey::TriangleMesh;
+    m1->load("resources/models/imperial.obj", loader, camera);
     m1->setScale(glm::vec3(0.1, 0.1, 0.1));
 
     this->objects.emplace_back();
@@ -26,8 +22,8 @@ MainGame::MainGame() : Game("Space Cadet", glm::ivec2(1600, 1024), false), camer
 }
 
 
-void MainGame::update(GameTime& gameTime) {
-    for(GameObject& obj : this->objects)
+void MainGame::update(maguey::GameTime& gameTime) {
+    for(maguey::GameObject& obj : this->objects)
         obj.update(gameTime);
 
     cam_update(gameTime);
@@ -37,7 +33,7 @@ void MainGame::update(GameTime& gameTime) {
         glfwSetWindowShouldClose(getWindow(), GL_TRUE);
 }
 
-void MainGame::cam_update(GameTime& gameTime) {
+void MainGame::cam_update(maguey::GameTime& gameTime) {
     float spf = (float)(gameTime.getMillisecondsPerFrame() / (long double)1000.0);
 
     // Pan
@@ -76,7 +72,7 @@ void MainGame::cam_update(GameTime& gameTime) {
 void MainGame::draw() {
     this->cubemap->draw();
 
-    for(GameObject& obj : this->objects)
+    for(maguey::GameObject& obj : this->objects)
         obj.draw();
 }
 

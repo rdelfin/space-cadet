@@ -52,21 +52,21 @@ void MainGame::cam_update(maguey::GameTime& gameTime) {
     
     // Yaw
     if(this->key().isPressed(GLFW_KEY_A))
-        this->camera.yaw(5.0f * spf);
+        this->camera.yaw(0.3f * spf);
     if(this->key().isPressed(GLFW_KEY_D))
-        this->camera.yaw(-5.0f * spf);
+        this->camera.yaw(-0.3f * spf);
 
     // Pitch
     if(this->key().isPressed(GLFW_KEY_W))
-        this->camera.pitch(5.0f * spf);
+        this->camera.pitch(0.3f * spf);
     if(this->key().isPressed(GLFW_KEY_S))
-        this->camera.pitch(-5.0f * spf);
+        this->camera.pitch(-0.3f * spf);
 
     // Roll
     if(this->key().isPressed(GLFW_KEY_Q))
-        this->camera.roll(-5.0f * spf);
+        this->camera.roll(-0.3f * spf);
     if(this->key().isPressed(GLFW_KEY_E))
-        this->camera.roll(5.0f * spf);
+        this->camera.roll(0.3f * spf);
 }
 
 void MainGame::draw() {

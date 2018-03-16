@@ -1,5 +1,8 @@
 #include <spacecadet/main_game.hpp>
 
+#include <iostream>
+#include <unordered_map>
+
 MainGame::MainGame() : maguey::Game("Space Cadet", glm::ivec2(1600, 1024), false), camera(getWindow()) {
     this->camera.reposition(glm::vec3(30, 0, 0), glm::vec3(-30, 0, 0), glm::vec3(0, 1, 0));
     maguey::ObjLoader loader;
@@ -13,12 +16,22 @@ MainGame::MainGame() : maguey::Game("Space Cadet", glm::ivec2(1600, 1024), false
                         "resources/textures/space-box/back.png",
                         camera);
 
-    auto * m1 = new maguey::TriangleMesh;
-    m1->load("resources/models/imperial.obj", loader, camera);
-    m1->setScale(glm::vec3(0.1, 0.1, 0.1));
-
     this->objects.emplace_back();
-    this->objects[0].addMesh(m1);
+
+    bool error;
+    std::unordered_map<std::string, maguey::TriangleMesh*> objs =
+        loader.loadFile("resources/models/imperial.obj",
+                        error, camera);
+
+    if(error) {
+        std::cerr << "There was an error loading file \"resources/models/imperial.obj\"" << std::endl;
+        exit(-1);
+    }
+
+    for(std::pair<std::string, maguey::TriangleMesh*> pair : objs) {
+        pair.second->setScale(glm::vec3(0.1, 0.1, 0.1));
+        this->objects[0].addMesh(pair.second);
+    }
 }
 
 
